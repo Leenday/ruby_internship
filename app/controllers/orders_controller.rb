@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
+    puts "params: #{params.inspect}"
   end
 
   # GET /orders/1
@@ -24,6 +26,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    byebug
     @order = Order.new(order_params)
 
     respond_to do |format|
