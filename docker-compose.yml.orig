@@ -1,0 +1,47 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: rails s -b 0.0.0.0
+    volumes:
+<<<<<<< HEAD
+      - .:/usr/src
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:11.5
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres:/var/lib/postgresql/data
+=======
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - sqlite3
+    tmpfs:
+      - /app/tmp/pids
+      - /app/tmp/cache
+
+  sqlite3:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./db/:/root/db/
+
+    # image: postgres:11.5
+    # environment:
+    #   POSTGRES_USER: twitter
+    #   POSTGRES_PASSWORD: twitter_pass
+    # volumes:
+    #   - postgres:/var/lib/postgresql/data
+>>>>>>> homework_branch
+
+volumes:
+  postgres:
