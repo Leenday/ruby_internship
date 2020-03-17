@@ -38,14 +38,14 @@ end
   User.create(
     first_name: "First_#{time}",
     last_name: "Last_#{time}",
-    balance: rand(10000)
+    ballance: rand(10000)
   )
 end
 
 users = User.all
 tags = Tag.all
 
-100_000.times do |time|
+10.times do |time|
   Order.create(
     name: "vm-#{time}",
     cost: rand(10000),

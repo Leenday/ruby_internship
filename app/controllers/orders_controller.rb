@@ -11,6 +11,10 @@ class OrdersController < ApplicationController
     puts "params: #{params.inspect}"
   end
 
+  def index
+    render json: Order.all, each_serializer: OrderSerializer
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
