@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount GrapeApi => '/api'
+  mount GrapeSwaggerRails::Engine => '/swagger'
   namespace :admin do
     root 'welcome#index'
   end
