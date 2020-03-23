@@ -9,9 +9,7 @@ class OrdersController < ApplicationController
 
     @users = User.all
     puts "params: #{params.inspect}"
-  end
 
-  def index
     render json: Order.all, each_serializer: OrderSerializer
   end
 
@@ -29,10 +27,19 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def check
+    # login_service = LoginService.new(params[:login], params[:password], session)
+    #     redirect_to :login, notice: login_service.message
+    order_service = OrderService.new(session, request)
+    render json: order_service.test
+    # render plain:order_service.test для тестов
+    # ?cpu=4&ram=8&hdd_capacity=150&hdd_type=ssd&os=linux
+  end
+
   # POST /orders
   # POST /orders.json
   def create
-    byebug
+    # byebug
     @order = Order.new(order_params)
 
     respond_to do |format|

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get 'approve'
       get 'calc'
+      get 'check'
 
     end
     collection do
