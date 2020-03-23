@@ -13,6 +13,11 @@ services:
     environment:
       REDIS_URL: redis://redis:6379/0
 
+  http_server:
+    build: ../VM
+    ports:
+      - "5678:5678"
+
   db:
     image: postgres:11.5
     environment:
